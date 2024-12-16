@@ -42,14 +42,6 @@ app.get("/api/generate-totp-secret", async (req, res) => {
         return;
     }
 
-    const results = await db.select({})
-        .from(usersTable).where(eq(usersTable.id, user.id));
-
-    if (results.length === 0) {
-        res.status(400).json({ errors: ["User not found"] });
-        return;
-    }
-
     const secret = generateSecret();
 
     const [{ token }] = await db.update(usersTable).set({
