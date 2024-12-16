@@ -57,12 +57,7 @@ export function generateTOTP(
         digits = 6,
         period = 30,
         offset = 0,
-    }: {
-        algorithm?: string,
-        digits?: number,
-        period?: number,
-        offset?: number
-    } = {}
+    }: GenerateTOTPOptions = {}
 ): string {
     const timeCounter = Math.floor(Date.now() / 1000 / period) + offset;
     const hexCounter = leftPad(timeCounter.toString(16), 16, "0");
@@ -92,12 +87,7 @@ export function verifyTOTP(
         algorithm = "sha1",
         digits = 6,
         period = 30
-    }: {
-        tolerance?: number,
-        algorithm?: string,
-        digits?: number,
-        period?: number
-    } = {}
+    }: VerifyTOTPOptions = {}
 ): boolean {
     const currentToken = generateTOTP(secret, { algorithm, digits, period });
 
