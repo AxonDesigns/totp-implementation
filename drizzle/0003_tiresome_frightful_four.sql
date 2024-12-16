@@ -1,0 +1,1 @@
+ALTER TABLE "users" RENAME COLUMN "totp_code" TO "totp_token";

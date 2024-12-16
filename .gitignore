@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env
+.env*.local
+
+# Build output (if using TypeScript or bundlers)
+dist/
+build/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Optional: Ignore package-lock.json or yarn.lock if you want to manage dependencies manually
+package-lock.json
+yarn.lock
