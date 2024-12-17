@@ -2,7 +2,7 @@ import "dotenv/config";
 import { Request } from "express";
 import { verify } from "jsonwebtoken";
 
-export const getUserFromToken = (req: Request) => {
+export const getUserFromRequest = (req: Request) => {
     const accessToken = (
         req.cookies.access_token || (req.headers.authorization?.split(" ")[1])
     ) as string | undefined;
@@ -16,5 +16,15 @@ export const getUserFromToken = (req: Request) => {
         return payload as { id: string, name: string, email: string, totpEnabled: boolean };
     } catch (error) {
         return null;
+    }
+}
+
+export function tryParseInt(value?: string) {
+    if (!value) return undefined;
+
+    try {
+        return parseInt(value);
+    } catch (error) {
+        return undefined;
     }
 }

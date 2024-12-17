@@ -30,7 +30,7 @@ export const login = async (req: Request, res: Response) => {
     return;
   }
 
-  const payload = foundUser[0];
+  const { password: _, ...payload } = foundUser[0];
 
   const accessToken = sign(payload, process.env.ACCESS_TOKEN_SECRET as string, {
     expiresIn: "1h",
